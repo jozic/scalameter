@@ -52,5 +52,13 @@ object ScalaMeterBuild extends Build {
     settings = Defaults.defaultSettings ++ Seq(runsuiteTask, javaCommandSetting)
   ) dependsOn (
   )
-  
+
+  lazy val scalameterScalacheck = Project(
+    "scalameter-scalacheck", file("scalameter-scalacheck.")
+  ) dependsOn (scalameter) settings (Defaults.defaultSettings: _*) settings(
+    name := "scalameter-scalacheck",
+    crossScalaVersions := Seq("2.10"),
+    libraryDependencies += "org.scalacheck" %% "scalacheck" % "1.10.0"
+    )
+
 }
