@@ -2,7 +2,6 @@ package org.scalameter.scalacheck
 
 import org.scalameter.Gen
 import org.scalacheck.{Gen => SGen}
-import org.scalacheck
 
 object RandomGen {
 
@@ -11,7 +10,7 @@ object RandomGen {
 
     /* sequences */
 
-    def random: Gen[(Int, scalacheck.Gen[Int])] = for {
+    def random: Gen[(Int, SGen[Int])] = for {
       size <- sizes
       randomGen = SGen.choose(0, size)
     } yield (size, randomGen)
